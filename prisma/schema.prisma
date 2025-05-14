@@ -1,0 +1,34 @@
+model Event {
+  id          String         @id @default(cuid())
+  title       String
+  date        String         // Format: "23 Aug - 30 Jun" or single date
+  location    String
+  imageUrl    String
+  detailsUrl  String         @unique
+  description String?
+  ticketRequests TicketRequest[]  // Relation to ticket requests
+  createdAt   DateTime       @default(now())
+  updatedAt   DateTime       @updatedAt
+  @@index([date])            // Faster sorting by date
+  @@index([location])        // Faster filtering by location
+}
+
+model TicketRequest {
+  id        String   @id @default(cuid())
+  email     String   @db.VarChar(255)
+  optedIn   Boolean  @default(false)
+  event     Event    @relation(fields: [eventId], references: [id])
+  eventId   String   // Foreign key
+  createdAt DateTime @default(now())
+  @@index([email])   // Faster lookups if you need to query by email
+}
+
+datasource db {
+  provider  = "postgresql"
+  url       = env("DATABASE_URL")
+  directUrl = env("DATABASE_URL")  
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
