@@ -1,4 +1,3 @@
-// app/events/page.tsx
 import { PrismaClient, Event as PrismaEvent } from '@prisma/client';
 import EventCard from '@/components/EventCard';
 

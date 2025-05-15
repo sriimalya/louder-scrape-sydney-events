@@ -1,7 +1,7 @@
 import { scrapeSydneyEvents } from '@/app/actions/getDataByPup';
 import { NextResponse } from 'next/server';
 
-export const dynamic = 'force-dynamic'; // Required for cron jobs
+export const dynamic = 'force-dynamic'; 
 
 export async function GET() {
   try {

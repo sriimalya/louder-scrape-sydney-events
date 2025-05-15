@@ -7,7 +7,6 @@ export async function POST(request: Request) {
   try {
     const { email, optedIn, eventId } = await request.json();
 
-    // Validate input
     if (!email || !eventId || typeof optedIn !== 'boolean') {
       return NextResponse.json(
         { error: 'Missing required fields' },
@@ -15,7 +14,6 @@ export async function POST(request: Request) {
       );
     }
 
-    // Check if event exists
     const eventExists = await prisma.event.findUnique({
       where: { id: eventId }
     });
@@ -27,7 +25,6 @@ export async function POST(request: Request) {
       );
     }
 
-    // Create ticket request
     const ticketRequest = await prisma.ticketRequest.create({
       data: {
         email,

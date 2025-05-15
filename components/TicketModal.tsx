@@ -38,7 +38,6 @@ export default function TicketModal({
         throw new Error(data.error || 'Failed to process request');
       }
 
-      // Redirect to event URL
       window.location.href = data.redirectUrl;
     } catch (err) {
       setError(err instanceof Error ? err.message : 'An unknown error occurred');
