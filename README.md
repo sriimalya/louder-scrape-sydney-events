@@ -1,36 +1,68 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Sydney Events Aggregator
 
-## Getting Started
+![Event Listing Screenshot](/scrape/EventListing.png)
 
-First, run the development server:
 
+A Next.js web application that automatically collects and displays events from across Sydney, with built-in ticketing functionality.
+
+## Key Features
+
+- **Automated Event Discovery** - Scrapes event data every 4 hours
+- **Beautiful UI** - Responsive design with lazy-loaded images
+- **Ticket Management** - Email collection with marketing opt-in
+- **Always Fresh** - Automatic updates via Vercel cron jobs
+- **Reliable Storage** - PostgreSQL database with Prisma ORM
+
+## Technology Stack
+
+**Frontend**:
+- Next.js 14 (App Router)
+- TypeScript
+- Tailwind CSS
+
+**Backend**:
+- Next.js API Routes
+- Puppeteer for web scraping
+- Prisma ORM with PostgreSQL (Neon)
+
+**Infrastructure**:
+- Vercel hosting
+- Serverless functions
+- Cron job scheduling: 0 */4 * * * (every 4 hours)
+
+## Quick Start
+
+### Prerequisites
+- Node.js 18+
+- PostgreSQL database ([Neon](https://neon.tech) recommended)
+- Vercel account
+
+### Installation
 ```bash
+# Clone repository
+git clone https://github.com/yourusername/sydney-events.git
+cd sydney-events
+
+# Install dependencies
+npm install
+
+# Configure environment
+cp .env.example .env.local
+
+# Edit .env.local with your database credentials:
+DATABASE_URL="postgres://user:password@host:port/dbname"
+
+# Running Locally:
+# Generate Prisma client
+npx prisma generate
+
+# Start development server
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Automatic Updates
+1. The system is configured to:
+2. Scrape event websites every 4 hours
+3. Update existing event records
+4. Add new events automatically
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
-
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.

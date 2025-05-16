@@ -1,0 +1,21 @@
+{
+  "version": 2,
+  "builds": [
+    {
+      "src": "package.json",
+      "use": "@vercel/node"
+    }
+  ],
+  "crons": [
+    {
+      "path": "/api/cron",
+      "schedule": "0 */4 * * *"
+    }
+  ],
+  "functions": {
+    "app/api/cron/route.ts": {
+      "memory": 3008,
+      "maxDuration": 60
+    }
+  }
+}
