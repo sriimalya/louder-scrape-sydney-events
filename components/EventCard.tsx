@@ -20,7 +20,7 @@ export default function EventCard({ event }: { event: Event }) {
       </div>
 
       <div className="p-4">
-        <h3 className="text-xl font-semibold mb-2">{event.title}</h3>
+        <h3 className="text-xl font-semibold mb-2 dark:text-gray-600">{event.title}</h3>
         <p className="text-gray-600 mb-1">{event.date}</p>
         <p className="text-gray-500 mb-3">{event.location}</p>
         
