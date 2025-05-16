@@ -1,6 +1,6 @@
 # Sydney Events Aggregator
 
-![Event Listing Screenshot](/scrape/EventListing.png)
+![Event Listing Screenshot](/EventListing.png)
 
 
 A Next.js web application that automatically collects and displays events from across Sydney, with built-in ticketing functionality.
